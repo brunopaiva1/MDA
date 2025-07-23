@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
 
 function Login() {
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (cpf === '123.456.789-00' && senha === '123456') {
       alert('Login bem-sucedido!');
     } else {
       alert('CPF ou senha incorretos');
     }
   };
+
+  const handleCadastro = () => {
+    navigate('/cadastro');
+  }
 
   return (
     <div className="login-container">
@@ -34,6 +40,7 @@ function Login() {
           required
         />
         <button type="submit">Entrar</button>
+        <button type="button" className='register-button' onClick={handleCadastro}>Cadastre-se</button>
       </form>
     </div>
   );
