@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import { useNavigate, Link } from 'react-router-dom';
+import './Login.css';
 
 function Login() {
   const [cpf, setCpf] = useState('');
@@ -16,10 +16,6 @@ function Login() {
       alert('CPF ou senha incorretos');
     }
   };
-
-  const handleCadastro = () => {
-    navigate('/cadastro');
-  }
 
   return (
     <div className="login-container">
@@ -40,7 +36,10 @@ function Login() {
           required
         />
         <button type="submit">Entrar</button>
-        <button type="button" className='register-button' onClick={handleCadastro}>Cadastre-se</button>
+
+        <Link to="/cadastro" className="register-link">
+          Cadastre-se
+        </Link>
       </form>
     </div>
   );
