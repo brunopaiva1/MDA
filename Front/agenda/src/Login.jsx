@@ -7,6 +7,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (cpf === '123.456.789-00' && senha === '123456') {
       alert('Login bem-sucedido!');
     } else {
