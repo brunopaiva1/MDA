@@ -10,7 +10,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (cpf === '123.456.789-00' && senha === '123456') {
+    if (cpf === '12345678900' && senha === '123456') {
       alert('Login bem-sucedido!');
     } else {
       alert('CPF ou senha incorretos');
@@ -23,7 +23,7 @@ function Login() {
         <h2>Login</h2>
         <input
           type="text"
-          placeholder="CPF (ex: 123.456.789-00)"
+          placeholder="CPF (ex: 12345678900)"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
           required

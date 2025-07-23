@@ -1,0 +1,45 @@
+.dashboard-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.lista-tarefas {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.lista-tarefas li {
+  background: #ffffff;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.adicionar-tarefa {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.adicionar-tarefa input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.adicionar-tarefa button {
+  padding: 8px 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
