@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
+import './Login.css'; 
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (email === 'admin@example.com' && senha === '123456') {
+    if (cpf === '123.456.789-00' && senha === '123456') {
       alert('Login bem-sucedido!');
     } else {
-      alert('Email ou senha incorretos');
+      alert('CPF ou senha incorretos');
     }
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Login</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
+          type="text"
+          placeholder="CPF (ex: 123.456.789-00)"
+          value={cpf}
+          onChange={(e) => setCpf(e.target.value)}
           required
         />
         <input
@@ -31,47 +30,12 @@ function Login() {
           placeholder="Senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          style={styles.input}
           required
         />
-        <button type="submit" style={styles.button}>Entrar</button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0c0808ff',
-    flexDirection: 'column'
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: '2rem',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 10,
-    width: 300,
-  },
-  input: {
-    padding: 10,
-    fontSize: '1rem',
-  },
-  button: {
-    padding: 10,
-    fontSize: '1rem',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer',
-  }
-};
 
 export default Login;
