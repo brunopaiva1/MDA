@@ -47,7 +47,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#0c0808ff',
     flexDirection: 'column'
   },
   title: {
