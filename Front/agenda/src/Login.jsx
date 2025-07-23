@@ -12,6 +12,7 @@ function Login() {
 
     if (cpf === '12345678900' && senha === '123456') {
       alert('Login bem-sucedido!');
+      navigate('/dashboard')
     } else {
       alert('CPF ou senha incorretos');
     }
@@ -37,7 +38,7 @@ function Login() {
         />
         <button type="submit">Entrar</button>
 
-        <Link to="/cadastro" className="register-link">
+        <Link to="/register" className="register-link">
           Cadastre-se
         </Link>
       </form>
