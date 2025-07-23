@@ -53,3 +53,32 @@
 .login-form button:hover {
   background-color: #000000;
 }
+
+.register-link {
+  text-align: center;
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  color: #aad4ff;
+}
+
+/* .form-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.back-arrow {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: white;
+} */
+
+
+

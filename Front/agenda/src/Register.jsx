@@ -1,27 +1,39 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import './Register.css'; 
+import { ArrowLeft } from 'lucide-react'; 
 
 function Register() {
   const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Usuário cadastrado:\nCPF: ${cpf}\nSenha: ${senha}`);
+    alert(`Usuário cadastrado:\nCPF: ${cpf}\nE-mail: ${email}\nSenha: ${senha}`);
     navigate('/');
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <div className="arrow-icon" onClick={() => navigate('/')}>
+          <ArrowLeft size={24} />
+        </div>
         <h2>Cadastro</h2>
         <input
           type="text"
           placeholder="CPF (ex: 123.456.789-00)"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
@@ -32,9 +44,6 @@ function Register() {
           required
         />
         <button type="submit">Cadastrar</button>
-        <button type="button" className="register-button" onClick={() => navigate('/')}>
-          Voltar ao Login
-        </button>
       </form>
     </div>
   );
