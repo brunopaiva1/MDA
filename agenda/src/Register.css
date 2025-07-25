@@ -74,3 +74,24 @@ html, body {
   cursor: pointer;
   color: white;
 }
+
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.password-input-container input {
+  margin-bottom: 0;
+  padding-right: 45px;
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #aaa;
+}
