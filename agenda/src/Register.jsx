@@ -38,7 +38,7 @@ function Register() {
         <h2>Cadastro</h2>
         <input
           type="text"
-          placeholder="CPF (ex: 123.456.789-00)"
+          placeholder="CPF (ex: 12345678900)"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
           required
