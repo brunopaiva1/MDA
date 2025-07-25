@@ -19,6 +19,11 @@ function Dashboard() {
           <Plus size={40} />
         </button>
       </div>
+      
+      {/* ↓↓ RODAPÉ ADICIONADO AQUI ↓↓ */}
+      <footer>
+        © {new Date().getFullYear()} Sua Empresa. Todos os direitos reservados.
+      </footer>
     </div>
   );
 }
