@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
+import { Eye, EyeOff } from 'lucide-react';
 
 function Login() {
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
+  const [mostrarSenha, setMostrarSenha] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -12,7 +14,7 @@ function Login() {
 
     if (cpf === '12345678900' && senha === '123456') {
       alert('Login bem-sucedido!');
-      navigate('/dashboard')
+      navigate('/dashboard');
     } else {
       alert('CPF ou senha incorretos');
     }
@@ -29,13 +31,20 @@ function Login() {
           onChange={(e) => setCpf(e.target.value)}
           required
         />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
+        
+        <div className="password-input-container">
+          <input
+            type={mostrarSenha ? 'text' : 'password'}
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+          <div className="password-icon" onClick={() => setMostrarSenha(!mostrarSenha)}>
+            {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
+          </div>
+        </div>
+
         <button type="submit">Entrar</button>
 
         <Link to="/register" className="register-link">
