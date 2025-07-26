@@ -7,9 +7,15 @@ import CardTarefa from './CardTarefa';
 
 function Dashboard() {
   const [modalAberto, setModalAberto] = useState(false);
+  const [tarefas, setTarefas] = useState([]);
 
   const abrirModal = () => setModalAberto(true);
   const fecharModal = () => setModalAberto(false);
+
+  const adicionarTarefa = (novaTarefa) => {
+    setTarefas(tarefasAnteriores => [...tarefasAnteriores, novaTarefa]);
+  };
+
 
   return (
     <div className="dashboard-menu-container">
