@@ -4,20 +4,47 @@ import { Plus } from 'lucide-react';
 import logoEmpresa from './assets/logo-mda.png';
 import FormularioTarefa from './Tarefa';
 import CardTarefa from './CardTarefa';
-import Footer from './Footer'; 
+import Footer from './Footer';
 
 function Dashboard() {
   const [modalAberto, setModalAberto] = useState(false);
   const [tarefas, setTarefas] = useState([]);
+  
+  const [tarefaParaEditar, setTarefaParaEditar] = useState(null);
 
-  const abrirModal = () => setModalAberto(true);
-  const fecharModal = () => setModalAberto(false);
-
-  const adicionarTarefa = (novaTarefa) => {
-    setTarefas(tarefasAnteriores => [...tarefasAnteriores, novaTarefa]);
+  const fecharModal = () => {
+    setModalAberto(false);
+    setTarefaParaEditar(null); 
   };
 
-return (
+  const handleAbrirModalParaCriar = () => {
+    setTarefaParaEditar(null);
+    setModalAberto(true);
+  };
+
+  const handleAbrirModalParaEditar = (tarefa) => {
+    setTarefaParaEditar(tarefa);
+    setModalAberto(true);
+  };
+
+  const handleSalvarTarefa = (tarefaSalva) => {
+    if (tarefas.some(t => t.id === tarefaSalva.id)) {
+      setTarefas(tarefasAnteriores =>
+        tarefasAnteriores.map(t => (t.id === tarefaSalva.id ? tarefaSalva : t))
+      );
+    } else {
+      setTarefas(tarefasAnteriores => [...tarefasAnteriores, tarefaSalva]);
+    }
+    fecharModal();
+  };
+
+  const handleDeletarTarefa = (idDaTarefa) => {
+    if (window.confirm('Tem certeza que deseja excluir esta tarefa?')) {
+      setTarefas(tarefasAnteriores => tarefasAnteriores.filter(tarefa => tarefa.id !== idDaTarefa));
+    }
+  };
+
+  return (
     <div className="dashboard-page">
       <main className="dashboard-main-content">
         <div className="content-wrapper">
@@ -28,19 +55,30 @@ return (
               <p className="sem-tarefas-aviso">Nenhuma tarefa cadastrada ainda.</p>
             ) : (
               tarefas.map(tarefa => (
-                <CardTarefa key={tarefa.id} tarefa={tarefa} />
+                <CardTarefa 
+                  key={tarefa.id} 
+                  tarefa={tarefa} 
+                  onDeletar={handleDeletarTarefa}
+                  onEditar={handleAbrirModalParaEditar} 
+                />
               ))
             )}
           </div>
           
-          <button className="add-task-button" onClick={abrirModal}>
+          <button className="add-task-button" onClick={handleAbrirModalParaCriar}>
             <Plus size={40} />
           </button>
         </div>
       </main>
 
-      {modalAberto && <FormularioTarefa onClose={fecharModal} onAdicionarTarefa={adicionarTarefa} />}
-
+      {modalAberto && (
+        <FormularioTarefa 
+          onClose={fecharModal} 
+          onSalvar={handleSalvarTarefa}
+          tarefaExistente={tarefaParaEditar}
+        />
+      )}
+      
       <Footer />
     </div>
   );

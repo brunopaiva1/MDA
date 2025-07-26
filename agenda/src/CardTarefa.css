@@ -68,3 +68,34 @@
 .status-concluída {
   background-color: #28a745;
 }
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-button:hover {
+  color: #007bff; 
+}
+
+.delete-button:hover {
+  color: #dc3545; 
+}
