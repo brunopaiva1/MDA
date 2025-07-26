@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import { Eye, EyeOff } from 'lucide-react';
+import { loginUsuario } from "./api";
 
 function Login() {
   const [cpf, setCpf] = useState('');
@@ -9,15 +10,16 @@ function Login() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (cpf === '12345678900' && senha === '123456') {
-      navigate('/dashboard');
-    } else {
-      alert('CPF ou senha incorretos');
-    }
-  };
+  const result = await loginUsuario(cpf, senha);
+  if (result.message === "Login realizado com sucesso!") {
+    navigate("/dashboard");
+  } else {
+    alert(result.message);
+  }
+};
 
   return (
     <div className="login-container">

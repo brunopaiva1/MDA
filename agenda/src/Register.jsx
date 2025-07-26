@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { criarUsuario } from './api';
 
 function Register() {
   const [cpf, setCpf] = useState('');
@@ -12,18 +13,16 @@ function Register() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (senha !== confirmarSenha) {
       alert('As senhas não coincidem. Por favor, tente novamente.');
       return; 
     }
-
+    await criarUsuario({ cpf, email, senha });
     alert(`Usuário cadastrado com sucesso!\nCPF: ${cpf}\nE-mail: ${email}`);
     navigate('/');
   };
-  
   
   const toggleMostrarSenha = () => {
     setMostrarSenha(!mostrarSenha);
@@ -51,7 +50,6 @@ function Register() {
           required
         />
         
-        {/* 4. Campo de senha com o ícone de visibilidade */}
         <div className="password-input-container">
           <input
             type={mostrarSenha ? 'text' : 'password'}
@@ -65,7 +63,6 @@ function Register() {
           </div>
         </div>
 
-        {/* 5. Campo de confirmação de senha com o ícone */}
         <div className="password-input-container">
           <input
             type={mostrarSenha ? 'text' : 'password'} 

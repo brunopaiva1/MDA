@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { Plus } from 'lucide-react';
 import logoEmpresa from './assets/logo-mda.png';
 import FormularioTarefa from './Tarefa';
 import CardTarefa from './CardTarefa';
 import Footer from './Footer';
+import { listarTarefas, criarTarefa, atualizarTarefa, excluirTarefa } from './api';
 
 function Dashboard() {
   const [modalAberto, setModalAberto] = useState(false);
   const [tarefas, setTarefas] = useState([]);
-  
   const [tarefaParaEditar, setTarefaParaEditar] = useState(null);
+  const userId = '12345678900'; // Pegar do login no futuro
+
+  useEffect(() => {
+    async function fetchTarefas() {
+      const data = await listarTarefas(userId);
+      setTarefas(data);
+    }
+    fetchTarefas();
+  }, []);
 
   const fecharModal = () => {
     setModalAberto(false);
@@ -27,19 +36,23 @@ function Dashboard() {
     setModalAberto(true);
   };
 
-  const handleSalvarTarefa = (tarefaSalva) => {
+  const handleSalvarTarefa = async (tarefaSalva) => {
+    tarefaSalva.userId = userId;
     if (tarefas.some(t => t.id === tarefaSalva.id)) {
+      await atualizarTarefa(tarefaSalva);
       setTarefas(tarefasAnteriores =>
         tarefasAnteriores.map(t => (t.id === tarefaSalva.id ? tarefaSalva : t))
       );
     } else {
-      setTarefas(tarefasAnteriores => [...tarefasAnteriores, tarefaSalva]);
+      const novaTarefa = await criarTarefa(tarefaSalva);
+      setTarefas([...tarefas, novaTarefa.tarefa]);
     }
     fecharModal();
   };
 
-  const handleDeletarTarefa = (idDaTarefa) => {
+  const handleDeletarTarefa = async (idDaTarefa) => {
     if (window.confirm('Tem certeza que deseja excluir esta tarefa?')) {
+      await excluirTarefa(userId, idDaTarefa);
       setTarefas(tarefasAnteriores => tarefasAnteriores.filter(tarefa => tarefa.id !== idDaTarefa));
     }
   };
