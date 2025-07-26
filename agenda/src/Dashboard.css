@@ -13,6 +13,9 @@
 .content-wrapper {
   width: 100%;
   max-width: 950px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('./assets/image.png');
+  background-size: cover;
+  background-position: center;
   background-color: #ffffff;
   padding: 4rem 2rem;
   border-radius: 16px;
