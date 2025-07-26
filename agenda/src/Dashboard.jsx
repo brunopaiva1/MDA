@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Dashboard.css';
+import { Plus } from 'lucide-react';
+import logoEmpresa from './assets/logo-mda.png';
 
 function Dashboard() {
-  const [tarefas, setTarefas] = useState([]);
-  const [novaTarefa, setNovaTarefa] = useState('');
-
-  const adicionarTarefa = () => {
-    if (novaTarefa.trim() === '') return;
-    setTarefas([...tarefas, novaTarefa]);
-    setNovaTarefa('');
+  const handleAddTaskClick = () => {
+    alert('Botão de adicionar tarefa clicado!');
   };
 
   return (
-    <div className="dashboard-container">
-      <h2>Minhas Tarefas</h2>
-      <ul className="lista-tarefas">
-        {tarefas.map((tarefa, index) => (
-          <li key={index}>{tarefa}</li>
-        ))}
-      </ul>
-      <div className="adicionar-tarefa">
-        <input
-          type="text"
-          placeholder="Nova tarefa"
-          value={novaTarefa}
-          onChange={(e) => setNovaTarefa(e.target.value)}
-        />
-        <button onClick={adicionarTarefa}>Adicionar</button>
+    <div className="dashboard-menu-container">
+      <div className="content-wrapper">
+        <img src={logoEmpresa} alt="Logo da Empresa" className="company-logo" />
+        
+        <h1 className="menu-title">Minhas Tarefas</h1>
+        
+        <button className="add-task-button" onClick={handleAddTaskClick}>
+          <Plus size={40} />
+        </button>
       </div>
+
+      <footer>
+        © {new Date().getFullYear()} MDA. Todos os direitos reservados.
+      </footer>
     </div>
   );
 }
