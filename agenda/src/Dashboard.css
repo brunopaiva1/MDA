@@ -1,33 +1,36 @@
-.dashboard-menu-container {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto; 
-  background-image: url('./assets/5b0f0d52f6cdc77c6033f700f0fdc1fa.jpg');
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  background-color: #000; 
+}
+
+.dashboard-main-content {
+  flex-grow: 1; 
+  
+  background-image: url('./assets/galaxy.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
-  position: relative;
 }
 
 .content-wrapper {
   width: 100%;
   max-width: 950px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('./assets/image.png');
-  background-size: cover;
-  background-position: center;
   background-color: #ffffff;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem 2rem; 
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .company-logo {
@@ -35,14 +38,20 @@
   height: auto;
 }
 
-.menu-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: Arial, "Helvetica", sans-serif;
-  color: #000000;
+.lista-tarefas-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sem-tarefas-aviso {
+  grid-column: 1 / -1;
   text-align: center;
-  letter-spacing: 1px;
-  text-shadow: 3px 3px 0 #ccc;
+  color: #888;
+  padding: 2rem;
+  font-style: italic;
 }
 
 .add-task-button {
@@ -64,33 +73,4 @@
   background-color: #000000;
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-footer {
-  width: 100%;
-  text-align: center;
-  margin-top: 2rem; 
-  padding-top: 2rem; 
-  border-top: 1px solid #000000; 
-  font-size: 0.9rem;
-  color: #000000; 
-}
-
-
-.lista-tarefas-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  padding: 0 1rem; 
-}
-
-.sem-tarefas-aviso {
-  grid-column: 1 / -1; 
-  text-align: center;
-  color: #888;
-  padding: 2rem;
-  font-style: italic;
 }
