@@ -13,7 +13,6 @@ function Login() {
     e.preventDefault();
 
     if (cpf === '12345678900' && senha === '123456') {
-      alert('Login bem-sucedido!');
       navigate('/dashboard');
     } else {
       alert('CPF ou senha incorretos');
