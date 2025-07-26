@@ -3,6 +3,7 @@ import './Dashboard.css';
 import { Plus } from 'lucide-react';
 import logoEmpresa from './assets/logo-mda.png';
 import FormularioTarefa from './Tarefa';
+import CardTarefa from './CardTarefa';
 
 function Dashboard() {
   const [modalAberto, setModalAberto] = useState(false);
