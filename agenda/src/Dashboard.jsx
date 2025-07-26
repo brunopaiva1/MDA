@@ -16,12 +16,22 @@ function Dashboard() {
     setTarefas(tarefasAnteriores => [...tarefasAnteriores, novaTarefa]);
   };
 
-
   return (
     <div className="dashboard-menu-container">
       <div className="content-wrapper">
         <img src={logoEmpresa} alt="Logo da Empresa" className="company-logo" />
         <h1 className="menu-title">Minhas Tarefas</h1>
+
+        <div className="lista-tarefas-container">
+          {tarefas.length === 0 ? (
+            <p className="sem-tarefas-aviso">Nenhuma tarefa cadastrada ainda.</p>
+          ) : (
+            tarefas.map(tarefa => (
+              <CardTarefa key={tarefa.id} tarefa={tarefa} />
+            ))
+          )}
+        </div>
+
         <button className="add-task-button" onClick={abrirModal}>
           <Plus size={40} />
         </button>
@@ -31,7 +41,7 @@ function Dashboard() {
         © {new Date().getFullYear()} MDA. Todos os direitos reservados.
       </footer>
 
-      {modalAberto && <FormularioTarefa onClose={fecharModal} />}
+      {modalAberto && <FormularioTarefa onClose={fecharModal} onAdicionarTarefa={adicionarTarefa} />}
     </div>
   );
 }
