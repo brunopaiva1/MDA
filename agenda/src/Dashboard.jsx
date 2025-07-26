@@ -18,10 +18,7 @@ function Dashboard() {
   };
 
 return (
-    // Usamos uma div principal para controlar o layout da página inteira
     <div className="dashboard-page">
-      
-      {/* O conteúdo principal agora fica dentro da tag <main> */}
       <main className="dashboard-main-content">
         <div className="content-wrapper">
           <img src={logoEmpresa} alt="Logo da Empresa" className="company-logo" />
@@ -42,10 +39,8 @@ return (
         </div>
       </main>
 
-      {/* O modal continua aqui, fora do fluxo principal */}
       {modalAberto && <FormularioTarefa onClose={fecharModal} onAdicionarTarefa={adicionarTarefa} />}
 
-      {/* O rodapé é o último item, irmão do <main> */}
       <Footer />
     </div>
   );
