@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Tarefa.css';
 import { X } from 'lucide-react';
 
-function FormularioTarefa({ onClose }) {
+function FormularioTarefa({ onClose, onAdicionarTarefa }) {
   const [nomeTarefa, setNomeTarefa] = useState('');
   const [descricao, setDescricao] = useState('');
   const [dataInicio, setDataInicio] = useState('');
@@ -11,8 +11,17 @@ function FormularioTarefa({ onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const novaTarefa = { nomeTarefa, descricao, dataInicio, dataFim, status };
-    console.log('Nova Tarefa:', novaTarefa);
+    const novaTarefa = { 
+      id: Date.now(), 
+      nomeTarefa, 
+      descricao, 
+      dataInicio, 
+      dataFim, 
+      status 
+    };
+    
+    onAdicionarTarefa(novaTarefa);
+    
     alert('Tarefa cadastrada com sucesso!');
     onClose();
   };

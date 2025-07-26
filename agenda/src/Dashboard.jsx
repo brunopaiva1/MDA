@@ -20,7 +20,6 @@ function Dashboard() {
     <div className="dashboard-menu-container">
       <div className="content-wrapper">
         <img src={logoEmpresa} alt="Logo da Empresa" className="company-logo" />
-        <h1 className="menu-title">Minhas Tarefas</h1>
 
         <div className="lista-tarefas-container">
           {tarefas.length === 0 ? (
@@ -35,11 +34,11 @@ function Dashboard() {
         <button className="add-task-button" onClick={abrirModal}>
           <Plus size={40} />
         </button>
-      </div>
 
-      <footer>
-        © {new Date().getFullYear()} MDA. Todos os direitos reservados.
-      </footer>
+        <footer> 
+          © {new Date().getFullYear()} MDA. Todos os direitos reservados.
+        </footer>
+      </div>
 
       {modalAberto && <FormularioTarefa onClose={fecharModal} onAdicionarTarefa={adicionarTarefa} />}
     </div>

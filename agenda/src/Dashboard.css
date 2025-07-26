@@ -1,11 +1,11 @@
 .dashboard-menu-container {
   width: 100vw;
   height: 100vh;
-  background-image: url('./assets/5b0f0d52f6cdc77c6033f700f0fdc1fa.jpg'); /* <-- Use o nome do seu arquivo */
+  overflow-y: auto; 
+  background-image: url('./assets/5b0f0d52f6cdc77c6033f700f0fdc1fa.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* background-color: #000000; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,14 +67,30 @@
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
   text-align: center;
+  margin-top: 2rem; 
+  padding-top: 2rem; 
+  border-top: 1px solid #000000; 
   font-size: 0.9rem;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  color: #000000; 
+}
+
+
+.lista-tarefas-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem; 
+}
+
+.sem-tarefas-aviso {
+  grid-column: 1 / -1; 
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+  font-style: italic;
 }
