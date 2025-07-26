@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './Tarefa.css';
 import { X } from 'lucide-react';
 
-function FormularioTarefa({ onClose }) {
+function FormularioTarefa({ onClose, onSalvar, tarefaExistente }) {
   const [nomeTarefa, setNomeTarefa] = useState('');
   const [descricao, setDescricao] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   const [status, setStatus] = useState('Pendente');
 
+  useEffect(() => {
+    if (tarefaExistente) {
+      setNomeTarefa(tarefaExistente.nomeTarefa);
+      setDescricao(tarefaExistente.descricao);
+      setDataInicio(tarefaExistente.dataInicio);
+      setDataFim(tarefaExistente.dataFim);
+      setStatus(tarefaExistente.status);
+    }
+  }, [tarefaExistente]); 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const novaTarefa = { nomeTarefa, descricao, dataInicio, dataFim, status };
-    console.log('Nova Tarefa:', novaTarefa);
-    alert('Tarefa cadastrada com sucesso!');
-    onClose();
+    const tarefaSalva = { 
+      id: tarefaExistente ? tarefaExistente.id : Date.now(), 
+      nomeTarefa, 
+      descricao, 
+      dataInicio, 
+      dataFim, 
+      status 
+    };
+    
+    onSalvar(tarefaSalva); 
   };
 
   return (
@@ -25,7 +41,7 @@ function FormularioTarefa({ onClose }) {
             <X size={24} />
           </button>
           
-          <h2>Cadastrar Nova Tarefa</h2>
+          <h2>{tarefaExistente ? 'Editar Tarefa' : 'Cadastrar Nova Tarefa'}</h2>
           
           <div className="form-group">
             <label htmlFor="nomeTarefa">Nome da Tarefa</label>
